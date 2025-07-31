@@ -1,4 +1,4 @@
-import { Component, computed, inject, linkedSignal, OnChanges, OnInit, signal, SimpleChanges } from '@angular/core';
+import { Component, computed, inject, linkedSignal, OnInit, signal } from '@angular/core';
 import { EmployeeService } from '@features/employee/services/employee.service';
 import { NavigationComponent } from '@shared/components/navigation/navigation.component';
 import { PaginationService } from '@shared/services/pagination.service';

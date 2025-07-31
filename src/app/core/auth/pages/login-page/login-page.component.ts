@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { User } from '@auth/interfaces/user.interface';
 import { AuthService } from '@auth/services/auth.service';
 
 @Component({

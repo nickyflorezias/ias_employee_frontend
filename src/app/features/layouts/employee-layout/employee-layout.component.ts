@@ -1,9 +1,7 @@
-import { TitleCasePipe } from '@angular/common';
-import { Component, HostListener, inject, signal } from '@angular/core';
-import { Event, NavigationEnd, NavigationStart, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { AuthService } from '@auth/services/auth.service';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { Component, HostListener, signal } from '@angular/core';
+import { Event, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @Component({

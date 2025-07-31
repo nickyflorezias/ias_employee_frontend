@@ -1,8 +1,5 @@
-import { Component, computed, inject, input, linkedSignal, OnChanges, signal, SimpleChanges } from '@angular/core';
-import { Employee } from '../../../features/employee/interfaces/employee.interface';
+import { Component, computed, inject, input, linkedSignal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
