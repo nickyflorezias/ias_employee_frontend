@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Country, Employee } from '@features/employee/interfaces/employee.interface';
 import { EmployeeService } from '@features/employee/services/employee.service';

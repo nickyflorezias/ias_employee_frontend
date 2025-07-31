@@ -5,13 +5,14 @@ import { HoverBorderBlue } from '@features/employee/directives/hover-blue.direct
 import { HoverTitleDirective } from '@features/employee/directives/hover-title.directive';
 import { ImageProfilePipe } from '@shared/pipes/image-profile.pipe';
 import { Employee } from '@features/employee/interfaces/employee.interface';
+import { ProfileImageListPipe } from '@shared/pipes/profile-image-list.pipe';
 
 @Component({
   selector: 'app-employee-table',
   imports: [
     DatePipe,
     HoverTitleDirective,
-    ImageProfilePipe,
+    ProfileImageListPipe,
     TitleCasePipe,
     HoverBorderBlue,
 ],

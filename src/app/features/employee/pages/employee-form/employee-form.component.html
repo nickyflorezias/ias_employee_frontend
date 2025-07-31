@@ -76,9 +76,9 @@
 
         </div>
 
-        <div class="flex flex-col ">
-            <img [src]="image() | imageprofile" alt="Imagen del empleado" class="w-115">
-            <fieldset class="fieldset w-full">
+        <div class="flex flex-col">
+            <img [src]="image() | imageprofile" alt="Imagen del empleado" class="">
+            <fieldset class="fieldset">
                 <legend class="fieldset-legend">Foto de perfil</legend>
                 <input type="file" class="w-full cover cursor-pointer file-input" formControlName="picture"
                     placeholder="Selecciona..." accept="image/*" (change)="OnFileChange($event)" />
