@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, linkedSignal, signal } from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, OnChanges, signal, SimpleChanges } from '@angular/core';
 import { Employee } from '../../../features/employee/interfaces/employee.interface';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -8,7 +8,6 @@ import { map } from 'rxjs';
   selector: 'app-navigation',
   imports: [
     RouterLink,
-
   ],
   templateUrl: './navigation.component.html',
   styles: ``
@@ -21,6 +20,7 @@ export class NavigationComponent {
   pages = input<number>(0)
 
   activatedPage = linkedSignal(this.currentPage)
+
 
   getPagesList = computed(() => {
     return Array.from({

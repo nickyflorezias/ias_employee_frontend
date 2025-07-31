@@ -9,9 +9,9 @@ export class ProfileImageListPipe implements PipeTransform {
     
         if(!value) return './img/no-image.jpg'
         if(value.includes('blob')) return './img/no-image.jpg'
+        if(value === 'img') return './img/no-image.jpg'
         if(value.includes('example')) return './img/no-image.jpg'
 
         return value;
     }
-
 }
