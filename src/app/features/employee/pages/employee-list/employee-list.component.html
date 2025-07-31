@@ -1,0 +1,27 @@
+<div class="m-5">
+    <h1 class="text-2xl font-bold">Lista de empleados</h1>
+    <p class="text-sm text-gray-400">Aquí tienes una lista de todos tus empleados con sus atributos</p>
+
+    <div class="my-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-4">
+
+            <div class="flex gap-2">
+                <select-cant (value)="cantItems.set($event)" />
+
+                @if (!wantFilter()) {
+                <button (click)="wantFilter.set(!wantFilter())" class="btn btn-accent">Filtrar empleados
+                    activos</button>
+                }@else {
+                <button (click)="wantFilter.set(!wantFilter())" class="btn btn-neutro">Limpiar filtro</button>
+                }
+            </div>
+
+            <search-employee (query)="querySearch.set($event)" />
+
+        </div>
+
+        <app-employee-data [employees]="employeesPaginated() | filterActive: wantFilter()" />
+
+        <app-navigation [pages]="cantPages()" />
+    </div>
+</div>

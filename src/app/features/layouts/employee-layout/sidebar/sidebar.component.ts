@@ -1,0 +1,23 @@
+import { TitleCasePipe } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AuthService } from '@auth/services/auth.service';
+import { PaginationService } from '@shared/services/pagination.service';
+import { ThemesService } from '@shared/services/themes.service';
+
+@Component({
+  selector: 'sidebar',
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    TitleCasePipe
+  ],
+  templateUrl: './sidebar.component.html',
+  styles: ``
+})
+export class SidebarComponent {
+
+  authService = inject(AuthService)
+  themeService = inject(ThemesService)
+}

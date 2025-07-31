@@ -1,0 +1,26 @@
+@for (employee of employees(); track $index) {
+<div class="card bg-base-100 card-xs shadow-sm">
+    <div class="card-body">
+        <div class="flex">
+            <img [src]="employee.picture | imageprofile" alt="Imagen de perfil" width="36" class="rounded-full">
+        </div>
+        <h2 class="card-title">{{employee.fullName}} <span class="badge badge-ghost">{{employee.country}}</span>
+        </h2>
+        <p>{{employee.responsibility}}</p>
+
+        <span [class]="[employee.status === 'Active' ? 'badge-success' : 'badge-error']"
+            class="badge flex items-center justify-center">{{employee.status}}</span>
+        <div class="justify-end card-actions">
+            @if (employee.status === 'Active') {
+            <button hoverborderblue (click)="employeeService.updateEmployeeStatus(employee.id)"
+                class="btn btn-ghost btn-md w-20">Inactivar</button>
+            }@else {
+            <button (click)="employeeService.updateEmployeeStatus(employee.id)"
+                class="btn btn-ghost btn-md">Activar</button>
+            }
+        </div>
+    </div>
+</div>
+}@empty {
+<h2 class="text-md font-bold">No hay empleados para mostrar</h2>
+}

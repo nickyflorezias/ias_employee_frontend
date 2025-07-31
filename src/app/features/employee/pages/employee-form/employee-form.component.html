@@ -1,0 +1,90 @@
+<div class="m-5">
+    <h1 class="text-2xl font-bold">Lista de empleados</h1>
+    <p class="text-sm text-gray-400">Aquí tienes una lista de todos tus empleados con sus atributos</p>
+
+    <form (submit)="registerUser(employeeForm.value)" class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 w-full mt-10"
+        [formGroup]="employeeForm">
+        <div class="w-full pr-5">
+            <label class="input w-full">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentColor" fill-rule="evenodd"
+                        d="M4.172 3.172C3 4.343 3 6.229 3 10v4c0 3.771 0 5.657 1.172 6.828S7.229 22 11 22h2c3.771 0 5.657 0 6.828-1.172S21 17.771 21 14v-4c0-3.771 0-5.657-1.172-6.828S16.771 2 13 2h-2C7.229 2 5.343 2 4.172 3.172M8 9.25a.75.75 0 0 0 0 1.5h8a.75.75 0 0 0 0-1.5zm0 4a.75.75 0 0 0 0 1.5h5a.75.75 0 0 0 0-1.5z"
+                        clip-rule="evenodd" />
+                </svg>
+                <input type="search" class="grow" placeholder="Documento" formControlName="document" />
+            </label>
+            @if (employeeForm.get('document')?.errors && employeeForm.get('document')?.touched) {
+            <p class="text-error">El campo es requerido</p>
+            }
+
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">Nombre completo</legend>
+                <input type="text" class="input w-full" placeholder="Nicky Florez" formControlName="fullName" />
+            </fieldset>
+            @if (employeeForm.get('fullName')?.errors && employeeForm.get('fullName')?.touched) {
+            <p class="text-error">El campo es requerido</p>
+            }
+
+            <label for="">País</label>
+            <select class="select w-full" formControlName="country">
+                <option disabled selected>Selecciona un país</option>
+                @for (country of countries; track $index) {
+                <option [value]="country">{{country}}</option>
+                }
+            </select>
+            @if (employeeForm.get('country')?.errors && employeeForm.get('country')?.touched) {
+            <p class="text-error">El campo es requerido</p>
+            }
+
+            <fieldset class="fieldset w-full">
+                <legend class="fieldset-legend">Cargo</legend>
+                <input type="text" class="input w-full" placeholder="UX" formControlName="responsability" />
+            </fieldset>
+            @if (employeeForm.get('responsability')?.errors && employeeForm.get('responsability')?.touched) {
+            <p class="text-error">El campo es requerido</p>
+            }
+
+            <h2 class="text-xl font-bold mt-5">Fecha de nacimiento</h2>
+
+            <div class="flex gap-3 w-full">
+                <fieldset class="fieldset w-full">
+                    <legend class="fieldset-legend">Año</legend>
+                    <input type="number" class="input" placeholder="2004" min="1900" formControlName="year" />
+                    @if (employeeForm.get('year')?.errors && employeeForm.get('year')?.touched) {
+                    <p class="text-error text-sm">El campo es requerido</p>
+                    }
+                </fieldset>
+
+                <fieldset class="fieldset w-full">
+                    <legend class="fieldset-legend">Mes</legend>
+                    <input type="number" class="input" placeholder="1" min="1" max="12" formControlName="month" />
+                    @if (employeeForm.get('month')?.errors && employeeForm.get('month')?.touched) {
+                    <p class="text-error text-sm">El campo es requerido</p>
+                    }
+                </fieldset>
+
+                <fieldset class="fieldset w-full">
+                    <legend class="fieldset-legend">Día</legend>
+                    <input type="number" class="input" placeholder="24" min="1" max="31" formControlName="day" />
+                    @if (employeeForm.get('day')?.errors && employeeForm.get('day')?.touched) {
+                    <p class="text-error text-sm">El campo es requerido</p>
+                    }
+                </fieldset>
+            </div>
+
+        <div class="divider"></div>
+
+        </div>
+
+        <div class="flex flex-col ">
+            <img [src]="image() | imageprofile" alt="Imagen del empleado" class="w-115">
+            <fieldset class="fieldset w-full">
+                <legend class="fieldset-legend">Foto de perfil</legend>
+                <input type="file" class="w-full cover cursor-pointer file-input" formControlName="picture"
+                    placeholder="Selecciona..." accept="image/*" (change)="OnFileChange($event)" />
+            </fieldset>
+
+            <button [disabled]="employeeForm.invalid" class="btn btn-accent mt-5">Guardar</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,10 @@
+<div class="join mt-5 flex justify-center">
+  @for (page of getPagesList(); track $index; let index = $index) {
+    <button 
+          (click)="activatedPage.set(page)"
+          [routerLink]="[]" 
+          [queryParams]="{page: page}" 
+          [class.btn-primary]="page === activatedPage()"
+          class="join-item btn">{{page}}</button>
+  }
+</div>

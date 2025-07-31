@@ -1,0 +1,56 @@
+<table class="hidden md:block table-xs md:table">
+    <!-- head -->
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre Completo</th>
+            <th>Cargo</th>
+            <th>Año nacimiento</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- row 1 -->
+        @for (employee of employees(); track employee.id) {
+        <tr>
+
+            <td>
+                {{employee.id}}
+            </td>
+
+            <td>
+                <div class="flex items-center gap-3">
+                    <div class="hidden sm:block avatar">
+                        <div class="mask mask-squircle h-12 w-12">
+                            <img [src]="employee.picture | imageprofile" alt="Avatar Tailwind CSS Component" />
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-bold cursor-pointer" hoverTitle>{{employee.fullName}}</div>
+                        <div class="hidden sm:block text-sm opacity-50">{{employee.country}}</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="badge badge-ghost badge-sm">{{employee.responsibility}}</span>
+            </td>
+            <td>{{employee.birthDate | date: 'MMMM dd / yyyy' | titlecase}}</td>
+            <td class="">
+                <span [class]="[employee.status === 'Active' ? 'badge-success' : 'badge-error']"
+                    class="badge flex items-center justify-center">{{employee.status}}</span>
+            </td>
+            <th>
+                @if (employee.status === 'Active') {
+                <button hoverborderblue (click)="employeeService.updateEmployeeStatus(employee.id)"
+                    class="btn btn-ghost btn-md w-20">Inactivar</button>
+                }@else {
+                <button (click)="employeeService.updateEmployeeStatus(employee.id)"
+                    class="btn btn-ghost btn-md">Activar</button>
+                }
+            </th>
+        </tr>
+        } @empty {
+        <h2 class="mt-5 text-lg font-bold">No hay empleados para mostrar</h2>
+        }
+</table>

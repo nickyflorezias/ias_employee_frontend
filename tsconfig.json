@@ -3,6 +3,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@features/employee/*": ["src/app/features/employee/*"],
+      "@auth/*": ["src/app/core/auth/*"],
+      "@shared/*": ["src/app/shared/*"],
+    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,

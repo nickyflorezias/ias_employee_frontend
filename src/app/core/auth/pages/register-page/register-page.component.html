@@ -1,0 +1,56 @@
+<form (submit)="onSubmitUser(registerForm.value)" class="flex items-center justify-center h-screen w-screen"
+    [formGroup]="registerForm">
+    <div class="flex items-center justify-center">
+        <fieldset class="bg-base-200 border-base-300 rounded-box w-xs border p-4 flex flex-col gap-3">
+            <legend class="fieldset-legend">Registro</legend>
+
+            <label class="label">Nombre completo</label>
+            <input type="text" class="input placeholder-gray-500" placeholder="Nicky Florez"
+                formControlName="fullName" />
+            @if (formUtils.isValidField(registerForm, 'fullName')) {
+            <span class="form-text text-danger">
+                {{formUtils.getFieldError(registerForm, 'fullName')}}
+            </span>
+            }
+
+            <label class="label">Correo electrónico</label>
+            <input type="text" class="input placeholder-gray-500" placeholder="test@test.com" formControlName="email" />
+            @if (formUtils.isValidField(registerForm, 'email')) {
+            <span class="form-text text-danger">
+                {{formUtils.getFieldError(registerForm, 'email')}}
+            </span>
+            }
+
+            <label class="label">Contraseña</label>
+            <input type="password" class="input placeholder-gray-500" placeholder="Test123@"
+                formControlName="password" />
+            @if (formUtils.isValidField(registerForm, 'password')) {
+            <span class="form-text text-danger">
+                {{formUtils.getFieldError(registerForm, 'password')}}
+            </span>
+            }
+
+            <button type="submit" [disabled]="registerForm.invalid" class="btn btn-neutral mt-4">Registrarse</button>
+
+            <p>¿Ya tienes una cuenta? <a routerLink="/auth/login"
+                    class="font-bold text-secondary cursor-pointer">Ingresa aquí</a> </p>
+        </fieldset>
+
+        @if (authService.hasError()) {
+        <div role="alert" class="alert alert-error mt-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Error! {{authService.errorMessage()}} </span>
+        </div> }
+
+
+        @if (authService.isLoading()) {
+        <div class="w-full flex justify-center mt-10">
+            <span class="loading loading-dots loading-md"></span>
+        </div>
+        }
+    </div>
+</form>
