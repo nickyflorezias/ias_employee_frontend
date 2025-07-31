@@ -12,16 +12,22 @@
                 <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                     <li><a routerLink="listpage">Empleados</a></li>
                     <li><a routerLink="formpage">Agregar</a></li>
-                    <button (click)="authService.logout()"
-                        class="btn btn-error mt-5 font-bold cursor-pointer hover:btn-accent">Cerrar</button>
 
-                    <select (change)="themeService.changeTheme(optionSelected.value)" class="select select-md"
-                        #optionSelected>
-                        <option disabled selected>Selecciona un tema</option>
-                        <option value="dark">Dark</option>
-                        <option value="forest">Forest</option>
-                        <option value="dracula">Dracula</option>
-                    </select>
+                    <div class="mt-5">
+                        <label for="">Selecciona un tema: </label>
+                        <select (change)="themeService.changeTheme(optionSelected.value)" class="select select-md"
+                            #optionSelected>
+                            <option disabled selected>{{themeService.theme() | titlecase}}</option>
+                            <option value="dark">Dark</option>
+                            <option value="forest">Forest</option>
+                            <option value="dracula">Dracula</option>
+                            <option value="sunset">Sunset</option>
+                            <option value="coffee">Coffee</option>
+                        </select>
+
+                        <button (click)="authService.logout()"
+                            class="btn btn-error mt-5 font-bold cursor-pointer hover:btn-accent w-full">Cerrar</button>
+                    </div>
                 </ul>
             </div>
             <a routerLink="/" class="btn btn-ghost text-xl">Empleados <span class="text-primary">IAS</span></a>
