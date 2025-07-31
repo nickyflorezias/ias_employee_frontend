@@ -4,9 +4,8 @@
     <p class="text-sm text-gray-400">Aquí tienes una lista de todos tus empleados con sus atributos</p>
 
     <div class="my-5">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-4">
-
-            <div class="flex gap-2">
+        <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 w-full gap-2">
+            <div class="flex gap-4 w-full justify-between lg:justify-start">
                 <select-cant (value)="cantItems.set($event)" />
 
                 @if (!wantFilter()) {
@@ -16,7 +15,7 @@
                 <button (click)="wantFilter.set(!wantFilter())" class="btn btn-neutro">Limpiar filtro</button>
                 }
             </div>
-
+            <div class=""></div>
             <search-employee (query)="querySearch.set($event)" />
 
         </div>
