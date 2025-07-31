@@ -2,7 +2,7 @@
 <div class="card bg-base-100 card-xs shadow-sm">
     <div class="card-body">
         <div class="flex">
-            <img [src]="employee.picture | imageprofile" alt="Imagen de perfil" width="36" class="rounded-full">
+            <img [src]="employee.picture | profileImageList" alt="Imagen de perfil" width="36" class="rounded-full">
         </div>
         <h2 class="card-title">{{employee.fullName}} <span class="badge badge-ghost">{{employee.country}}</span>
         </h2>

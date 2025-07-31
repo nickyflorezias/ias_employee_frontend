@@ -3,14 +3,14 @@
     <div class="flex flex-col relative">
         <div id="menu" class="bg-neutral min-h-screen text-slate-300 w-64 fixed left-0 h-screen overflow-y-scroll">
             <div id="logo" class="my-4 px-6">
-                <h1 class="text-lg md:text-2xl font-bold text-white">Empleados<span class="text-primary"> | IAS</span>
+                <h1 class="text-lg md:text-2xl font-bold text-white"><a routerLink="/">Empleados <span class="text-primary"> | IAS</span> </a>
                 </h1>
                 <p class="text-slate-500 text-sm">Maneja tus empleados de forma sencilla</p>
             </div>
 
             <div id="profile" class="px-6 py-6">
                 <p class="text-slate-500">Bienvenido de vuelta,</p>
-                <a href="#" class="inline-flex space-x-2 items-center">
+                <a class="inline-flex space-x-2 items-center">
                     <span class="text-sm md:text-base font-bold">
                         {{authService.user() | titlecase}}
                     </span>
@@ -46,20 +46,25 @@
                     </div>
                 </a>
 
+                <div class="mt-5">
+                    <label for="">Selecciona un tema: </label>
+                    <select (change)="themeService.changeTheme(optionSelected.value)" class="select select-md"
+                        #optionSelected>
+                        <option disabled selected>{{themeService.theme() | titlecase}}</option>
+                        <option value="dark">Dark</option>
+                        <option value="forest">Forest</option>
+                        <option value="dracula">Dracula</option>
+                        <option value="sunset">Sunset</option>
+                        <option value="coffee">Coffee</option>
+                    </select>
+                </div>
+
                 <div class="divider mt-10">
                     <button (click)="authService.logout()"
                         class="text-secondary font-bold cursor-pointer hover:text-accent">Cerrar sesión</button>
                 </div>
 
-                <select (change)="themeService.changeTheme(optionSelected.value)" class="select select-md"
-                    #optionSelected>
-                    <option disabled selected>Selecciona un tema</option>
-                    <option value="dark">Dark</option>
-                    <option value="forest">Forest</option>
-                    <option value="dracula">Dracula</option>
-                    <option value="sunset">Sunset</option>
-                    <option value="coffee">Coffee</option>
-                </select>
+
             </div>
         </div>
 
