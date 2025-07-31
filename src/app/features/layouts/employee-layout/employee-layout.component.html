@@ -1,5 +1,5 @@
 @if (isLargeScreen) {
-  <sidebar />
+  <sidebar [isLoading]="isLoading()" />
 } @else {
-  <navbar />
+  <navbar [isLoading]="isLoading()" />
 }

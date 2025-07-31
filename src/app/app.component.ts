@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Event, NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { ThemesService } from '@shared/services/themes.service';
 
 @Component({
@@ -10,6 +10,5 @@ import { ThemesService } from '@shared/services/themes.service';
 })
 export class AppComponent {
   title = 'angular-employees';
-
   themeService = inject(ThemesService)
 }

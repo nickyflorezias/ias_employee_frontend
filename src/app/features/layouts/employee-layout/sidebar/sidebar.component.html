@@ -56,7 +56,8 @@
                         class="text-secondary font-bold cursor-pointer hover:text-accent">Cerrar sesión</button>
                 </div>
 
-                <select (change)="themeService.changeTheme(optionSelected.value)" class="select select-md" #optionSelected>
+                <select (change)="themeService.changeTheme(optionSelected.value)" class="select select-md"
+                    #optionSelected>
                     <option disabled selected>Selecciona un tema</option>
                     <option value="dark">Dark</option>
                     <option value="forest">Forest</option>
@@ -66,7 +67,13 @@
         </div>
 
         <div class="flex flex-col ml-64">
+            @if (isLoading()) {
+            <div class="w-full h-screen flex justify-center">
+                <span class="loading loading-ring loading-lg"></span>
+            </div>
+            }@else {
             <router-outlet />
+            }
         </div>
 
     </div>

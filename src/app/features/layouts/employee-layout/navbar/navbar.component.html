@@ -30,5 +30,11 @@
             <span class="btn"> {{authService.user()}} </span>
         </div>
     </div>
+    @if (isLoading()) {
+    <div class="w-full h-screen flex justify-center">
+        <span class="loading loading-ring loading-lg"></span>
+    </div>
+    }@else {
     <router-outlet />
+    }
 </div>

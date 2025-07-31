@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { ThemesService } from '@shared/services/themes.service';
@@ -13,6 +13,9 @@ import { ThemesService } from '@shared/services/themes.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent { 
+
+  isLoading = input(false)
+
   authService = inject(AuthService)
   themeService = inject(ThemesService)
 }
