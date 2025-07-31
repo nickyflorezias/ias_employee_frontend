@@ -20,7 +20,6 @@ export class EmployeeService {
     console.log('Getting users...');
     return this.http.get<Employee[]>(`${environment.BASE_URL}/employee`)
       .subscribe((resp) => {
-        console.log({ resp });
         this.employees.set(resp)
       })
   }

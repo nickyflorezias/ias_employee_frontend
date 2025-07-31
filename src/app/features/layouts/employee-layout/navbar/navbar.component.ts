@@ -1,3 +1,4 @@
+import { TitleCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
@@ -7,7 +8,8 @@ import { ThemesService } from '@shared/services/themes.service';
   selector: 'navbar',
   imports: [
     RouterOutlet,
-    RouterLink
+    RouterLink,
+    TitleCasePipe
   ],
   templateUrl: './navbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
