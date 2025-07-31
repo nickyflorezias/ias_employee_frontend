@@ -1,59 +1,80 @@
 # AngularEmployees
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+Este proyecto es un frontend desarrollado con Angular, que consume la API REST del backend desarrollado en Spring Boot.
 
-## Development server
+## Requisitos Previos
+Node.js (versión recomendada 18 o superior)
 
-To start a local development server, run:
+Angular CLI instalado globalmente:
+
+```bash
+npm install -g @angular/cli
+```
+
+##### El backend Spring Boot debe estar corriendo previamente para que el frontend pueda comunicarse correctamente con la API.
+
+## Clonar el Repositorio
+```bash
+git clone https://github.com/tu-usuario/tu-repositorio-frontend.git
+cd tu-repositorio-frontend
+```
+
+## Configuración
+Configura la URL base del backend
+Edita el archivo src/environments/environment.ts (y environment.prod.ts si haces build de producción) para establecer la URL donde está corriendo el backend.
+
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8080'  // Dirección donde corre el backend
+};
+```
+
+## Instalar dependencias
+```bash
+npm install
+```
+
+## Ejecutar la aplicación
+Asegúrate primero que el backend esté corriendo en la dirección y puerto configurados (por defecto http://localhost:8080).
+
+Luego, ejecuta:
 
 ```bash
 ng serve
 ```
+Por defecto, la app estará disponible en:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```arduino
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+## Construir para producción
 ```bash
-ng generate --help
+ng build --prod
 ```
 
-## Building
+Los archivos resultantes estarán en la carpeta dist/.
 
-To build the project run:
+## Probar la aplicación
+Al abrir el frontend en el navegador (http://localhost:4200), la app consumirá el backend en la URL configurada.
 
+Si el backend no está activo, la app no podrá obtener datos ni funcionar correctamente.
+
+## Estructura del proyecto
 ```bash
-ng build
+src/
+ ├── app/               # Código fuente Angular
+ ├── environments/      # Configuración de entornos
+angular.json
+package.json
+tsconfig.json
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Tecnologías usadas
+Angular 15+
+TypeScript
+HTML5, CSS3
+Tailwind 
+Daisy UI
