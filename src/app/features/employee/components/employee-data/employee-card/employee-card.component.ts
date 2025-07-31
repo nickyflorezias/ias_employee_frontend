@@ -1,12 +1,12 @@
 import { Component, inject, input } from '@angular/core';
 import { Employee } from '@features/employee/interfaces/employee.interface';
 import { EmployeeService } from '@features/employee/services/employee.service';
-import { ImageProfilePipe } from '@shared/pipes/image-profile.pipe';
+import { ProfileImageListPipe } from '@shared/pipes/profile-image-list.pipe';
 
 @Component({
   selector: 'app-employee-card',
   imports: [
-    ImageProfilePipe
+    ProfileImageListPipe
   ],
   templateUrl: './employee-card.component.html',
   styles: ``

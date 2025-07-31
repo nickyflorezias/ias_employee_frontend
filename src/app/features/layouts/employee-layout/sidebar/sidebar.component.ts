@@ -2,7 +2,6 @@ import { TitleCasePipe } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
-import { PaginationService } from '@shared/services/pagination.service';
 import { ThemesService } from '@shared/services/themes.service';
 
 @Component({

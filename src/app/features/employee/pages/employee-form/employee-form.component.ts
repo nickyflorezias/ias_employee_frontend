@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormUtils } from '@auth/utils/form-utils';
 import { Country, Employee } from '@features/employee/interfaces/employee.interface';
 import { EmployeeService } from '@features/employee/services/employee.service';
 import { ImageProfilePipe } from '@shared/pipes/image-profile.pipe';
@@ -17,6 +18,7 @@ export class EmployeeFormComponent {
 
   private fb = inject(FormBuilder)
   private employeeService = inject(EmployeeService)
+  formUtils = FormUtils
 
   employeeForm = this.fb.group({
     document: ['', Validators.required],

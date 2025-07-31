@@ -8,6 +8,7 @@
       "@features/employee/*": ["src/app/features/employee/*"],
       "@auth/*": ["src/app/core/auth/*"],
       "@shared/*": ["src/app/shared/*"],
+      "@envs/*": ["src/environments/*"],
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

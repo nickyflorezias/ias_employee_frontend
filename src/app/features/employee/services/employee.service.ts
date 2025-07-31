@@ -1,9 +1,9 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Employee } from '../interfaces/employee.interface';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs';
+import { Employee } from '../interfaces/employee.interface';
 
 
 @Injectable({
@@ -16,18 +16,26 @@ export class EmployeeService {
 
   employees = signal<Employee[]>([])
 
+  employeesCache = new Map<string, Employee[]>
+
   getAllEmployees() {
-    console.log('Getting users...');
+    if(this.employeesCache.get('employees')){
+      this.employees.set(this.employeesCache.get('employees')!)
+      return;
+    }
+
+    console.log('Fetching users...');
     return this.http.get<Employee[]>(`${environment.BASE_URL}/employee`)
       .subscribe((resp) => {
-        console.log({ resp });
         this.employees.set(resp)
+        this.employeesCache.set('employees', resp)
       })
   }
 
   updateEmployeeStatus(id: string) {
     return this.http.put<Employee>(`${environment.BASE_URL}/employee/${id}`, {})
       .pipe(
+        tap((_) => this.employeesCache.clear()),
         tap((_) => this.getAllEmployees())
       )
       .subscribe();
@@ -44,6 +52,7 @@ export class EmployeeService {
       status: employee.status
     })
       .pipe(
+        tap((_) => this.employeesCache.clear()),
         tap((_) => this.router.navigateByUrl("/employee/listpage"))
       )
       .subscribe();

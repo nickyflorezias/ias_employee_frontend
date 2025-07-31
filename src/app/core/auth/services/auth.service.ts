@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, OnInit, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthResponse } from '@auth/interfaces/auth-response.interface';
 import { User } from '@auth/interfaces/user.interface';
+import { environment } from '@envs/environment';
 import { catchError, Observable, of, tap } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import Swal from 'sweetalert2'
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
