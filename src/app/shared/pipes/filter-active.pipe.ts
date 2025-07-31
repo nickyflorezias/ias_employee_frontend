@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Employee } from '../../features/employee/interfaces/employee.interface';
+import { Employee } from '@features/employee/interfaces/employee.interface';
 
 @Pipe({
   name: 'filterActive'

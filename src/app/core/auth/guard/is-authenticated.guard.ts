@@ -1,4 +1,4 @@
-import { inject, Inject } from '@angular/core';
+import { inject } from '@angular/core';
 import { CanMatchFn, Router } from '@angular/router';
 
 export const isAuthenticatedGuard: CanMatchFn = (route, segments) => {

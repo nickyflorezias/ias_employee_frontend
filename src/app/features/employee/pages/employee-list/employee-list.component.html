@@ -22,6 +22,6 @@
 
         <app-employee-data [employees]="employeesPaginated() | filterActive: wantFilter()" />
 
-        <app-navigation [pages]="cantPages()" />
+        <app-navigation [pages]="cantPages()" [currentPage]="this.paginationSerice.currentPage()" />
     </div>
 </div>

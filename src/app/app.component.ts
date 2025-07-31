@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Event, NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { ThemesService } from '@shared/services/themes.service';
 
 @Component({
