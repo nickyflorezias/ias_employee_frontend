@@ -2,8 +2,8 @@
     <h1 class="text-2xl font-bold">Lista de empleados</h1>
     <p class="text-sm text-gray-400">Aquí tienes una lista de todos tus empleados con sus atributos</p>
 
-    <form (submit)="registerUser(employeeForm.value)" class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 w-full mt-10"
-        [formGroup]="employeeForm">
+    <form (submit)="registerUser(employeeForm.value)"
+        class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 w-full mt-10" [formGroup]="employeeForm">
         <div class="w-full pr-5">
             <label class="input w-full">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -13,35 +13,45 @@
                 </svg>
                 <input type="search" class="grow" placeholder="Documento" formControlName="document" />
             </label>
-            @if (employeeForm.get('document')?.errors && employeeForm.get('document')?.touched) {
-            <p class="text-error">El campo es requerido</p>
+            @if (formUtils.isValidField(employeeForm, 'document')) {
+            <span class="form-text text-error">
+                {{formUtils.getFieldError(employeeForm, 'document')}}
+            </span>
             }
 
             <fieldset class="fieldset">
                 <legend class="fieldset-legend">Nombre completo</legend>
                 <input type="text" class="input w-full" placeholder="Nicky Florez" formControlName="fullName" />
             </fieldset>
-            @if (employeeForm.get('fullName')?.errors && employeeForm.get('fullName')?.touched) {
-            <p class="text-error">El campo es requerido</p>
+            @if (formUtils.isValidField(employeeForm, 'fullName')) {
+            <span class="form-text text-error">
+                {{formUtils.getFieldError(employeeForm, 'fullName')}}
+            </span>
             }
 
-            <label for="">País</label>
-            <select class="select w-full" formControlName="country">
-                <option disabled selected>Selecciona un país</option>
-                @for (country of countries; track $index) {
-                <option [value]="country">{{country}}</option>
-                }
-            </select>
-            @if (employeeForm.get('country')?.errors && employeeForm.get('country')?.touched) {
-            <p class="text-error">El campo es requerido</p>
-            }
+            <fieldset class="fieldset">
+                <legend class="fieldset-legend">País</legend>
 
+                <select class="select w-full" formControlName="country">
+                    <option disabled selected>Selecciona un país</option>
+                    @for (country of countries; track $index) {
+                    <option [value]="country">{{country}}</option>
+                    }
+                </select>
+            </fieldset>
+            @if (formUtils.isValidField(employeeForm, 'country')) {
+            <span class="form-text text-error">
+                {{formUtils.getFieldError(employeeForm, 'country')}}
+            </span>
+            }
             <fieldset class="fieldset w-full">
                 <legend class="fieldset-legend">Cargo</legend>
                 <input type="text" class="input w-full" placeholder="UX" formControlName="responsability" />
             </fieldset>
-            @if (employeeForm.get('responsability')?.errors && employeeForm.get('responsability')?.touched) {
-            <p class="text-error">El campo es requerido</p>
+            @if (formUtils.isValidField(employeeForm, 'responsability')) {
+            <span class="form-text text-error">
+                {{formUtils.getFieldError(employeeForm, 'responsability')}}
+            </span>
             }
 
             <h2 class="text-xl font-bold mt-5">Fecha de nacimiento</h2>
@@ -50,29 +60,35 @@
                 <fieldset class="fieldset w-full">
                     <legend class="fieldset-legend">Año</legend>
                     <input type="number" class="input" placeholder="2004" min="1900" formControlName="year" />
-                    @if (employeeForm.get('year')?.errors && employeeForm.get('year')?.touched) {
-                    <p class="text-error text-sm">El campo es requerido</p>
+                    @if (formUtils.isValidField(employeeForm, 'year')) {
+                    <span class="form-text text-error">
+                        {{formUtils.getFieldError(employeeForm, 'year')}}
+                    </span>
                     }
                 </fieldset>
 
                 <fieldset class="fieldset w-full">
                     <legend class="fieldset-legend">Mes</legend>
                     <input type="number" class="input" placeholder="1" min="1" max="12" formControlName="month" />
-                    @if (employeeForm.get('month')?.errors && employeeForm.get('month')?.touched) {
-                    <p class="text-error text-sm">El campo es requerido</p>
+                    @if (formUtils.isValidField(employeeForm, 'month')) {
+                    <span class="form-text text-error">
+                        {{formUtils.getFieldError(employeeForm, 'month')}}
+                    </span>
                     }
                 </fieldset>
 
                 <fieldset class="fieldset w-full">
                     <legend class="fieldset-legend">Día</legend>
                     <input type="number" class="input" placeholder="24" min="1" max="31" formControlName="day" />
-                    @if (employeeForm.get('day')?.errors && employeeForm.get('day')?.touched) {
-                    <p class="text-error text-sm">El campo es requerido</p>
+                    @if (formUtils.isValidField(employeeForm, 'day')) {
+                    <span class="form-text text-error">
+                        {{formUtils.getFieldError(employeeForm, 'day')}}
+                    </span>
                     }
                 </fieldset>
             </div>
 
-        <div class="divider"></div>
+            <div class="divider"></div>
 
         </div>
 
